@@ -1,4 +1,5 @@
 import PyPDF2
+import re
 
 pdf_file_path = r"C:\Users\brian\python_automation\Jago_Main Pocket_History_27082023.pdf"
 output_file_path = "transaction_output_pypdf2.txt"  # Specify the output file path
@@ -13,8 +14,16 @@ lines_to_skip = [
     "Transaction	Details",
     "Notes",
     "Amount",
-    "Balance"
+    "Balance",
+    "PT	Bank	Jago	Tbk	is	licensed	and	supervised	by	Financial	Services	Authority	(OJK),	and	also	a	member	of",
+    "Indonesia	Deposit	Insurance	Corporation	(LPS)	deposit	insurance	program.",
+    "www.jago.com",
+    "Disclaimer",
+    "based	on	search	result	and	filter	Customer	has	applied."
 ]
+
+# Regular expression pattern to match "Page X of Y" lines
+page_number_pattern = re.compile(r"Page\s+\d+\s+of\s+\d+")
 
 with open(pdf_file_path, 'rb') as pdf_file:
     pdf_reader = PyPDF2.PdfReader(pdf_file)
@@ -32,8 +41,8 @@ with open(pdf_file_path, 'rb') as pdf_file:
             if current_line_number < start_line_number:
                 continue
 
-            # Skip lines that match the lines to skip
-            if any(skip_line in line for skip_line in lines_to_skip):
+            # Skip lines that match the lines to skip or the page number pattern
+            if any(skip_line in line for skip_line in lines_to_skip) or page_number_pattern.match(line):
                 continue
 
             # Add the line to transaction data
