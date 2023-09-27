@@ -1,0 +1,44 @@
+-- date
+26	Aug	2023
+
+-- time
+13:20
+
+-- source/destination
+Emergency	Fund
+Movement	between	Pockets
+
+-- transaction details
+Pocket	Money	Out
+ID#	309871120
+
+-- amount
++80.000
+
+-- balance
+83.000
+
+
+
+
+-- date
+25	Aug	2023
+
+-- time
+17:25
+
+-- source/destination
+Jago	Traktir	Cashback
+
+-- transaction details
+Cashback
+ID#	309395026
+
+-- notes
+Jago	QRIS	x	Family	Mart
+
+-- amount
++3.000
+
+-- balance
+3.000
