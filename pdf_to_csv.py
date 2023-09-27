@@ -11,6 +11,7 @@ with pdfplumber.open(pdf_path) as pdf:
     for page_num, page in enumerate(pdf.pages):
         text = page.extract_text()
         page_texts.append(text)
+        # print(text)
 
 # Step 2: Process Text and Create CSV Content
 header = None
@@ -18,12 +19,14 @@ csv_content = []
 
 for page_text in page_texts:
     lines = page_text.strip().split("\n")
+    print(lines)
     
     if not header:
         # Check if line contains the header pattern
         if "Date & Time Source/Destination Transaction Details Notes Amount Balance" in lines[1]:
             header = lines[1].split("\t")
             csv_header = "|".join(header)
+            # print(lines[1],'\n',header)
     else:
         for line in lines:
             # Check if line follows the content pattern
