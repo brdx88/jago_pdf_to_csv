@@ -3,3 +3,4 @@ transaction_history_output.txt
 transaction_history_v2.csv
 transaction_history.csv
 transaction_history.xlsx
+transaction_output_pypdf2.txt
